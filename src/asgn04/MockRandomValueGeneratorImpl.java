@@ -7,11 +7,9 @@ public class MockRandomValueGeneratorImpl implements RandomValueGenerator {
 	public int getRandomValue() {
 		return notRlyRand;
 	}
-	
+
 	public void setRandomValue(int num) {
-		notRlyRand=num;
+		notRlyRand = num;
 	}
-	
-	
 
 }
