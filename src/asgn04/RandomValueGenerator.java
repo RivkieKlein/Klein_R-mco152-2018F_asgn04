@@ -1,5 +1,8 @@
 package asgn04;
 
 public interface RandomValueGenerator {
-	int getRandomValue();
+	public int getRandomValue();
+	public int getRandomValue(int max, int min);
+	
+	
 }

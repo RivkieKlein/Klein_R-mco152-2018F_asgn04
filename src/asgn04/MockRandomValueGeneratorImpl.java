@@ -7,6 +7,11 @@ public class MockRandomValueGeneratorImpl implements RandomValueGenerator {
 	public int getRandomValue() {
 		return notRlyRand;
 	}
+	
+	@Override
+	public int getRandomValue(int max, int min) {
+		return notRlyRand;
+	}
 
 	public void setRandomValue(int num) {
 		notRlyRand = num;

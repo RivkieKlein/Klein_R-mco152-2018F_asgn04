@@ -43,14 +43,14 @@ public class Betting_TESTS {
 	public void betAmount10Min6Max11SelNum7RandNum7BetOnANumberReturns50() {
 		better.addMoney(40);
 		((MockRandomValueGeneratorImpl) better.generator).setRandomValue(7);
-		assertEquals(7, better.betOnANumber(10, 6, 11, 7));
+		assertEquals(50, better.betOnANumber(10, 6, 11, 7));
 	}
 	
 	@Test
 	//tests that a case where the selected number does not match random number return is negative equals amount 
 	public void betAmount10Min6Max11SelNum8RandNum7BetOnANumberReturnsNeg10() {
 		better.addMoney(40);
-		((MockRandomValueGeneratorImpl) better.generator).setRandomValue(7);
+		((MockRandomValueGeneratorImpl) better.generator).setRandomValue(8);
 		int amt =10;
 		assertEquals((amt*(-1)), better.betOnANumber(amt, 6, 11, 7));
 	}
@@ -69,17 +69,19 @@ public class Betting_TESTS {
 	//if event happens
 	//should return correct positive winnings
 	public void betAmount10ProbabilityPoint4EventHappensReturns15() {
+		better.setHappens(true);
 		better.addMoney(40);
-		assertEquals(15,better.betOnProbability(10, .4));
+		assertEquals(15,better.betOnProbability(10, .4), .001);
 	}
 	
 	@Test
 	//if event does not happen
 	//should return negative losses
 	public void betAmount10ProbabilityPoint4EventDoesNotHappenReturnsNeg10() {
+		better.setHappens(false);
 		better.addMoney(40);
 		int amt=10;
-		assertEquals((amt*(-1)),better.betOnProbability(amt, .4));
+		assertEquals((amt*(-1)),better.betOnProbability(amt, .4), .001);
 	}
 	
 	@Test (expected=InvalidProbabilityException.class)
@@ -97,9 +99,9 @@ public class Betting_TESTS {
 	}
 	
 	@Test (expected=InvalidProbabilityException.class)
-	//should throw exception if bet on a negative probability
+	//should throw Invalid Probability exception first if bet on a negative probability and also bet too large of an amount
 	public void greaterThan1ProbabilityIllegalBetThrowsInvalidProbabilityException() {
-		better.addMoney(40);
+		better.addMoney(30);
 		better.betOnProbability(10,1.2);
 	}
 	
