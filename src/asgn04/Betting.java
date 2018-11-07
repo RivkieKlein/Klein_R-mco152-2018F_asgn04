@@ -4,7 +4,7 @@ public class Betting {
 	
 	private int currBalance;
 	private int minBalance;
-	private RandomValueGenerator generator;
+	protected RandomValueGenerator generator;
 	
 	public Betting(int minBalance, RandomValueGenerator rand) {
 		
